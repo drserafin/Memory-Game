@@ -1,6 +1,7 @@
 let player1Score = 0;
 let player2Score = 0;
 let currentPlayer = 'player1';
+let canFlip = true; // Track whether the player can flip cards
 
 const player1ScoreElement = document.getElementById('player1Score');
 const player2ScoreElement = document.getElementById('player2Score');
@@ -43,7 +44,6 @@ function updateScore(player) {
 // Example usage of updateScore function when a match is found
 function handleMatch() {
     updateScore(currentPlayer); // Update current player's score
-    switchPlayer(); // Switch to the next player
 
     const flippedCards = document.querySelectorAll('.flip.matched');
 
@@ -57,6 +57,8 @@ function handleMatch() {
 
         checkGameEnd(); // Check if the game has ended
     }, 1000); // Adjust the delay time as needed
+
+    canFlip = true; // Allow the player to flip cards again
 }
 
 // Create game board
@@ -85,11 +87,11 @@ function createBoard() {
 
 // Flip card
 function flipCard() {
-    if (document.querySelectorAll('.flip:not(.matched)').length >= 2) {
-        return; // Prevent more than 2 cards being flipped at once
+    if (!canFlip || this.classList.contains('flip') || document.querySelectorAll('.flip:not(.matched)').length >= 2) {
+        return; // Prevent flipping a card that is already flipped or if 2 cards are already flipped
     }
 
-    this.classList.toggle('flip');
+    this.classList.add('flip');
     checkForMatch();
 }
 
@@ -142,6 +144,8 @@ function restartGame() {
     player2ScoreElement.textContent = player2Score;
     currentPlayer = 'player1'; // Reset to player 1
     updateBackground(); // Reset background color
+
+    canFlip = true; // Allow player to flip cards
 }
 
 // Shuffle cards
@@ -158,6 +162,7 @@ function shuffleCards() {
 function switchPlayer() {
     currentPlayer = currentPlayer === 'player1' ? 'player2' : 'player1';
     updateBackground();
+    canFlip = true; // Allow the current player to flip cards
 }
 
 function updateBackground() {
