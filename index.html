@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bible Memory Card Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Bible Memory Card Game</h1>
+    </header>
+    <div class="memory-game">
+      <div class="game-grid"></div>
+      <button onclick="restartGame()">Restart Game</button>
+    </div>
+  </div>
+
+  <div class="leaderboard" id="leaderboard">
+    <h2>Leaderboard</h2>
+    <ul>
+      <li id="player1Label">Player 1: <span id="player1Score">0</span> points</li>
+      <li id="player2Label">Player 2: <span id="player2Score">0</span> points</li>
+    </ul>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

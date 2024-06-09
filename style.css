@@ -1,0 +1,179 @@
+/* General styles for the game and leaderboard */
+
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #fff4db;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 800px;
+  width: 100%;
+  margin: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  color: #000000; /* Dark text color */
+  font-size: 30px;
+}
+
+.memory-game {
+  background-color: #000000; /* Dark red background */
+  padding: 20px;
+  border-radius: 5px; /* Increased border radius */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 columns for grid */
+  grid-template-rows: repeat(6, 1fr); /* 6 rows for grid */
+  gap: 20px; /* Increased gap between cards (adjust as needed) */
+  background-color: #595959; /* White background */
+  border-radius: 5px; /* Increased border radius */
+  padding: 15px; /* Increased padding */
+  perspective: 1000px;
+}
+
+/* Card styles */
+.card {
+  position: relative;
+  width: 100px; /* Adjust if necessary */
+  height: 100px; /* Adjust if necessary */
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+  border-radius: 10px;
+}
+
+.card .card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  background-size: contain; /* Ensure image fits within the card */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Prevent image from repeating */
+}
+
+.card .front {
+  background-image: url("card_images/yellowlogoCross.jpeg"); /* Default front image */
+}
+
+.card .back {
+  transform: rotateY(180deg);
+}
+
+
+.card.flip {
+  transform: rotateY(180deg);
+}
+
+.card.matched {
+  cursor: default;
+  box-shadow: none;
+  opacity: 0; /* Hide matched cards */
+}
+
+/* Animation for fade out effect */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.1); /* Scale down the card as it fades out */
+  }
+}
+
+button {
+  display: block;
+  margin: 20px auto;
+  padding: 15px 30px; /* Increased padding */
+  font-size: 18px; /* Increased font size */
+  background-color: #ff0000; /* Dark red */
+  color: #fff;
+  border: none;
+  border-radius: 10px; /* Increased border radius */
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for background and text color */
+}
+
+button:hover {
+  background-color: #000000; /* Darker red on hover */
+}
+
+.leaderboard {
+  position: fixed;
+  top: 20px;
+  right: 20px; /* Adjust for desired spacing */
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  width: 300px; /* Adjust width if needed */
+  z-index: 1000; /* Ensure it stays on top */
+}
+
+.leaderboard h2 {
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 24px;
+  color: #333;
+}
+
+.players {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.player {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}
+
+.player-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.player-score {
+  font-size: 18px;
+  color: #555;
+}
+.card.fade-out {
+  animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
