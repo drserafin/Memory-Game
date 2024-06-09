@@ -46,14 +46,17 @@ function handleMatch() {
     switchPlayer(); // Switch to the next player
 
     const flippedCards = document.querySelectorAll('.flip.matched');
-    flippedCards.forEach(card => {
-        card.classList.add('fade-out'); // Add fade-out class
-    });
 
-    const matchedCards = document.querySelectorAll('.matched');
-    if (matchedCards.length === 30) {
-        setTimeout(() => alert('Congratulations! You win!'), 500);
-    }
+    // Delay before fading out matched cards
+    setTimeout(() => {
+        flippedCards.forEach(card => {
+            if (card.classList.contains('matched') && card.classList.contains('flip')) {
+                card.classList.add('fade-out'); // Add fade-out class
+            }
+        });
+
+        checkGameEnd(); // Check if the game has ended
+    }, 1000); // Adjust the delay time as needed
 }
 
 // Create game board
@@ -99,17 +102,19 @@ function checkForMatch() {
         const secondImage = secondCard.querySelector('.back').style.backgroundImage;
 
         if (firstImage === secondImage) {
-            flippedCards.forEach(card => {
-                card.classList.remove('flip');
-                card.classList.add('matched'); // Add matched class
-            });
+            setTimeout(() => {
+                flippedCards.forEach(card => {
+                    card.classList.remove('flip');
+                    card.classList.add('matched'); // Add matched class
+                });
 
-            handleMatch(); // Update current player's score
+                handleMatch(); // Update current player's score
+            }, 1000); // Delay before matching
         } else {
             setTimeout(() => {
                 flippedCards.forEach(card => card.classList.remove('flip'));
                 switchPlayer(); // Switch to the next player
-            }, 1000);
+            }, 1000); // Delay before flipping back
         }
     }
 }
@@ -118,7 +123,7 @@ function checkForMatch() {
 function restartGame() {
     const cards = document.querySelectorAll('.card');
     cards.forEach(card => {
-        card.classList.remove('flip', 'matched', 'fade-out'); // Remove fade-out class
+        card.classList.remove('flip', 'matched', 'fade-out'); // Remove flip, matched, fade-out classes
         card.style.transition = '';
         card.style.opacity = 1; // Reset card opacity
     });

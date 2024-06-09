@@ -1,5 +1,3 @@
-/* General styles for the game and leaderboard */
-
 /* Reset and base styles */
 * {
   box-sizing: border-box;
@@ -28,34 +26,33 @@ header {
 }
 
 header h1 {
-  color: #000000; /* Dark text color */
+  color: #000;
   font-size: 30px;
 }
 
 .memory-game {
-  background-color: #ffbb00; /* Dark red background */
+  background-color: #000;
   padding: 20px;
-  border-radius: 5px; /* Increased border radius */
+  border-radius: 5px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   margin-bottom: 20px;
 }
 
 .game-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 columns for grid */
-  grid-template-rows: repeat(6, 1fr); /* 6 rows for grid */
-  gap: 20px; /* Increased gap between cards (adjust as needed) */
-  background-color: #fffcb3; /* White background */
-  border-radius: 5px; /* Increased border radius */
-  padding: 15px; /* Increased padding */
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 20px;
+  background-color: #a1a1a1;
+  border-radius: 5px;
+  padding: 15px;
   perspective: 1000px;
 }
 
-/* Card styles */
 .card {
   position: relative;
-  width: 100px; /* Adjust if necessary */
-  height: 100px; /* Adjust if necessary */
+  width: 100px;
+  height: 100px;
   cursor: pointer;
   transform-style: preserve-3d;
   transition: transform 0.5s ease;
@@ -68,13 +65,13 @@ header h1 {
   height: 100%;
   backface-visibility: hidden;
   border-radius: 10px;
-  background-size: contain; /* Ensure image fits within the card */
-  background-position: center; /* Center the background image */
-  background-repeat: no-repeat; /* Prevent image from repeating */
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .card .front {
-  background-image: url("card_images/yellowlogoCross.jpeg"); /* Default front image */
+  background-image: url("card_images/JesusIsKing.jpeg");
 }
 
 .card .back {
@@ -88,52 +85,49 @@ header h1 {
 .card.matched {
   cursor: default;
   box-shadow: none;
-  opacity: 0; /* Hide matched cards */
+  animation: fadeOutAnimation 1s forwards; /* Apply fade-out animation */
 }
 
-/* Animation for fade out effect */
-@keyframes fadeOut {
+@keyframes fadeOutAnimation {
   from {
     opacity: 1;
     transform: scale(1);
   }
   to {
     opacity: 0;
-    transform: scale(0.1); /* Scale down the card as it fades out */
+    transform: scale(0.1);
   }
-}
-
-.card.fade-out {
-  animation: fadeOut 0.5s forwards;
 }
 
 button {
   display: block;
   margin: 20px auto;
-  padding: 15px 30px; /* Increased padding */
-  font-size: 18px; /* Increased font size */
-  background-color: #ff0000; /* Dark red */
+  padding: 15px 30px;
+  font-size: 18px;
+  background-color: #ff0000;
   color: #fff;
   border: none;
-  border-radius: 10px; /* Increased border radius */
+  border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for background and text color */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 button:hover {
-  background-color: #000000; /* Darker red on hover */
+  background-color: #000;
 }
 
 .leaderboard {
   position: fixed;
   top: 20px;
-  right: 30px; /* Adjust for desired spacing */
-  background-color: #ffffff;
+  right: 20px;
+  background-color: #fff;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  width: 300px; /* Adjust width if needed */
-  z-index: 1000; /* Ensure it stays on top */
+  width: 250px;
+  z-index: 1000;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
 }
 
 .leaderboard h2 {
@@ -144,9 +138,8 @@ button:hover {
 }
 
 .players {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  list-style-type: none;
+  padding: 0;
 }
 
 .player {
@@ -156,6 +149,7 @@ button:hover {
   padding: 10px;
   background-color: #f0f0f0;
   border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 .player-name {
@@ -167,4 +161,33 @@ button:hover {
 .player-score {
   font-size: 18px;
   color: #555;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .game-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    gap: 10px;
+    padding: 5px;
+  }
+
+  .card {
+    width: 100%;
+    height: 100%;
+  }
+
+  header h1 {
+    font-size: 24px;
+  }
+
+  .leaderboard {
+    width: 150px;
+    padding: 10px;
+  }
+
+  button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
 }
