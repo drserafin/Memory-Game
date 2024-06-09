@@ -47,8 +47,7 @@ function handleMatch() {
 
     const flippedCards = document.querySelectorAll('.flip.matched');
     flippedCards.forEach(card => {
-        card.style.transition = 'opacity 0.5s ease';
-        card.style.opacity = 0; // Fade out the card
+        card.classList.add('fade-out'); // Add fade-out class
     });
 
     const matchedCards = document.querySelectorAll('.matched');
@@ -119,7 +118,7 @@ function checkForMatch() {
 function restartGame() {
     const cards = document.querySelectorAll('.card');
     cards.forEach(card => {
-        card.classList.remove('flip', 'matched');
+        card.classList.remove('flip', 'matched', 'fade-out'); // Remove fade-out class
         card.style.transition = '';
         card.style.opacity = 1; // Reset card opacity
     });

@@ -33,7 +33,7 @@ header h1 {
 }
 
 .memory-game {
-  background-color: #000000; /* Dark red background */
+  background-color: #ffbb00; /* Dark red background */
   padding: 20px;
   border-radius: 5px; /* Increased border radius */
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
@@ -45,7 +45,7 @@ header h1 {
   grid-template-columns: repeat(5, 1fr); /* 5 columns for grid */
   grid-template-rows: repeat(6, 1fr); /* 6 rows for grid */
   gap: 20px; /* Increased gap between cards (adjust as needed) */
-  background-color: #595959; /* White background */
+  background-color: #fffcb3; /* White background */
   border-radius: 5px; /* Increased border radius */
   padding: 15px; /* Increased padding */
   perspective: 1000px;
@@ -81,7 +81,6 @@ header h1 {
   transform: rotateY(180deg);
 }
 
-
 .card.flip {
   transform: rotateY(180deg);
 }
@@ -104,6 +103,10 @@ header h1 {
   }
 }
 
+.card.fade-out {
+  animation: fadeOut 0.5s forwards;
+}
+
 button {
   display: block;
   margin: 20px auto;
@@ -124,7 +127,7 @@ button:hover {
 .leaderboard {
   position: fixed;
   top: 20px;
-  right: 20px; /* Adjust for desired spacing */
+  right: 30px; /* Adjust for desired spacing */
   background-color: #ffffff;
   padding: 20px;
   border-radius: 10px;
@@ -164,16 +167,4 @@ button:hover {
 .player-score {
   font-size: 18px;
   color: #555;
-}
-.card.fade-out {
-  animation: fadeOut 1s forwards;
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
 }
