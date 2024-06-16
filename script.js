@@ -10,7 +10,7 @@ const player2Element = document.getElementById('player2Label');
 
 // List of image paths (15 unique images)
 const images = [
-    'card_images/colorfulCrossimage.jpg',
+    'card_images/image1.jpg',
     'card_images/image2.jpg',
     'card_images/image3.jpg',
     'card_images/image4.jpg',

@@ -43,7 +43,7 @@ header h1 {
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(6, 1fr);
   gap: 20px;
-  background-color: #a1a1a1;
+  background-color: #2b3750;
   border-radius: 5px;
   padding: 15px;
   perspective: 1000px;
@@ -71,7 +71,7 @@ header h1 {
 }
 
 .card .front {
-  background-image: url("card_images/JesusIsKing.jpeg");
+  background-image: url("card_images/clickme.jpeg");
 }
 
 .card .back {
