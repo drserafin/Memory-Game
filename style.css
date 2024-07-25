@@ -192,7 +192,38 @@ button:hover {
   }
 }
 
-#playPauseBtn {
-    background-color: #007bff;
-    color: white;
+
+
+.audio-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #c9c9c9;
+  padding: 3px;
+  border: 1px solid #7d7d7d;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column; /* Make the container a vertical flexbox */
+  align-items: center;
+  font-size: 14px;
+}
+
+.small-button {
+  background-color: #000000; /* Blue background color */
+  color: #fff; /* White text color */
+
+  padding: 5px 10px; /* Reduce button size */
+  font-size: 12px; /* Reduce font size */
+  margin-right: 5px; /* Add some space between buttons */
+}
+
+
+.audio-controls {
+  display: flex;
+  flex-direction: row; /* Make the controls a horizontal flexbox */
+  align-items: center;
+}
+
+#music-header {
+  margin-bottom: 5px; /* Add some space between title and controls */
 }

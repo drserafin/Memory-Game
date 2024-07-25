@@ -24,10 +24,24 @@
       <li id="player2Label">Player 2: <span id="player2Score">0</span> points</li>
     </ul>
   </div>
-  <audio autoplay loop>
-    <source src="audio/Here I Am to Worship - piano instrumental cover with lyrics.mp3" type="audio/mpeg">
 
+  <!-- Audio Container -->
+  <div class="audio-container">
+    <!-- Title -->
+    <h4 id="music-title">Background Music</h4>
+    <!-- Audio Controls -->
+    <div class="audio-controls">
+      <button class="small-button" onclick="playAudio()">Play</button>
+      <button class="small-button" onclick="pauseAudio()">Pause</button>
+      <label for="volumeControl">Volume:</label>
+      <input type="range" id="volumeControl" min="0" max="1" step="0.1" onchange="setVolume(this.value)">
+    </div>
+    <!-- Audio Element (hidden) -->
+    <audio id="audio" src="audio/Here I Am to Worship - piano instrumental cover with lyrics.mp3"></audio>
+  </div>
 
+  <!--Audio Card Flip-->
+  <audio id="flip-sound" src="audio/Deepwoken Talent Card Flip Sound Effect.mp3"></audio>
 
   <script src="script.js"></script>
 </body>

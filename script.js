@@ -92,7 +92,15 @@ function flipCard() {
     }
 
     this.classList.add('flip');
+    playFlipSound(); //Play flip sound
     checkForMatch();
+}
+
+// Play flip sound
+function playFlipSound() {
+    const flipSound = document.getElementById('flip-sound');
+    flipSound.currentTime = 0; // Reset the sound to the beginning
+    flipSound.play();
 }
 
 // Check for match
@@ -176,6 +184,25 @@ function updateBackground() {
         player1Element.style.color = 'black';
     }
 }
+
+    // Play the audio
+    function playAudio() {
+      const audio = document.getElementById('audio');
+      audio.play();
+    }
+
+    // Pause the audio
+    function pauseAudio() {
+      const audio = document.getElementById('audio');
+      audio.pause();
+    }
+
+    // Set the volume of the audio
+    function setVolume(value) {
+      const audio = document.getElementById('audio');
+      audio.volume = value; // The value should be between 0 (mute) and 1 (full volume)
+    }
+
 
 // Initialize game
 createBoard();
